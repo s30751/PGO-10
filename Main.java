@@ -1,36 +1,54 @@
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
 
-        Car car1 = new Car("M3", 2019);
-        Car car2 = new Car("X4", 2017);
-        Car car3 = new Car("A46",2020);
-        Car car4 = new Car("218s",2018);
-        Car car5 = new Car("f40",1987);
-        Car car6 = new Car("GLC 300", 2022);
-        Car car7 = new Car("E46", 2004);
-        Car car8 = new Car("A7", 2015);
-        Car car9 = new Car("RAV 4", 2023);
-        Car car10 = new Car("911", 2024);
+        List<Item> items = new ArrayList<>();
+        items.add(new Item(1, "rower"));
+        items.add(new Item(2, "deskorolka"));
+        items.add(new Item(3, "laptop"));
+        items.add(new Item(4, "telefon"));
+        items.add(new Item(5, "komputer"));
 
-        ArrayList<Car> cars = new ArrayList<>();
-        cars.add(car1);
-        cars.add(car2);
-        cars.add(car3);
-        cars.add(car4);
-        cars.add(car5);
-        cars.add(car6);
-        cars.add(car7);
-        cars.add(car8);
-        cars.add(car9);
-        cars.add(car10);
+        /*zadanie 3*/
+        items.add(new Item(6, "playStation"));
+        items.add(new Item(7, "monitor"));
+        items.add(new Item(8, "klawiarura"));
+        items.add(new Item(9, "a"));
+        items.add(new Item(10, "b"));
+        items.add(new Item(11, "c"));
+        items.add(new Item(12, "d"));
+        items.add(new Item(13, "e"));
+        items.add(new Item(14, "f"));
+        items.add(new Item(15, "g"));
 
-       Collections.sort(cars);
 
-       for(Car car : cars) {
-           System.out.println(car);
-       }
+        for(int i = 0; i < items.size(); i++) {
+            items.get(i).show();
+        }
+
+        Map<Integer, String> itemMap = new HashMap<>();
+        for(Item item : items) {
+            itemMap.put(item.getId(), item.getName());
+        }
+
+        for (Map.Entry<Integer, String> entry : itemMap.entrySet()) {
+            System.out.println("ID: " + entry.getKey() + ", Name: " + entry.getValue());
+        }
+
+
+        List<Item> firstFiveItems = items.subList(0, 5);
+        Set<Item> itemSet = new HashSet<>(firstFiveItems);
+
+        System.out.println("\nElements in HashSet:");
+        for (Item item : itemSet) {
+            System.out.println(item);
+        }
     }
+
 }
